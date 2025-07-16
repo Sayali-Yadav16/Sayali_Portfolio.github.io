@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayali Ramesh Yadav - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        tertiary: '#0ea5e9',
+                        dark: '#1e293b',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f0f9ff, #f5f3ff);
+            scroll-behavior: smooth;
+        }
+        .card {
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .highlight {
+            position: relative;
+            z-index: 1;
+        }
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background-color: rgba(139, 92, 246, 0.2);
+            z-index: -1;
+            transform: skewY(-1deg);
+            transition: height 0.3s ease;
+        }
+        .highlight:hover::after {
+            height: 100%;
+        }
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e2e8f0;
+            overflow: hidden;
+        }
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            transition: width 1s ease-in-out;
+        }
+        .nav-link {
+            position: relative;
+            padding-bottom: 4px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .project-card {
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .project-image {
+            transition: transform 0.5s ease;
+        }
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+        .contact-input:focus {
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-sm z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-primary">Sayali<span class="text-secondary">.</span></a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="nav-link text-gray-700 hover:text-primary">About</a>
+                <a href="#skills" class="nav-link text-gray-700 hover:text-primary">Skills</a>
+                <a href="#projects" class="nav-link text-gray-700 hover:text-primary">Projects</a>
+                <a href="#contact" class="nav-link text-gray-700 hover:text-primary">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-4 px-6 shadow-lg">
+            <div class="flex flex-col space-y-4">
+                <a href="#about" class="nav-link text-gray-700 hover:text-primary">About</a>
+                <a href="#skills" class="nav-link text-gray-700 hover:text-primary">Skills</a>
+                <a href="#projects" class="nav-link text-gray-700 hover:text-primary">Projects</a>
+                <a href="#contact" class="nav-link text-gray-700 hover:text-primary">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                    Hi, I'm <span class="text-primary">Sayali</span> Yadav
+                </h1>
+                <h2 class="text-2xl md:text-3xl text-gray-700 mb-6">
+                    Web Developer & Engineering Student
+                </h2>
+                <p class="text-gray-600 mb-8 max-w-xl">
+                    Passionate about creating innovative web solutions and exploring new technologies.
+                    Currently pursuing my engineering degree at AISSMS IOIT, Pune.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#contact" class="bg-primary hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                        Contact Me
+                    </a>
+                    <a href="#projects" class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                        View Projects
+                    </a>
+                </div>
+            </div>
+             <div class="md:w-1/2 flex justify-center">
+                <div class="relative">
+                    <!-- Image container with gradient border -->
+                    <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl" 
+                         style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">
+                        <!-- Your image will go here -->
+                        <img src="Images/My photo.jpeg"
+                             alt="Sayali Ramesh Yadav"
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-4 -right-4 bg-white p-4 rounded-lg shadow-lg">
+                        <div class="flex items-center">
+                            <div class="bg-indigo-100 p-2 rounded-full mr-3">
+                                <i class="fas fa-medal text-primary"></i>
+                            </div>
+                            <p class="font-semibold">5+ Projects</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6 bg-gradient-to-r from-indigo-50 to-purple-50">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-16">About Me</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                <!-- Experience Card -->
+                <div class="card bg-white p-6 rounded-xl shadow-md border-l-4 border-primary">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-briefcase text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Experience</h3>
+                    </div>
+                    <div class="pl-12">
+                        <div class="mb-3">
+                            <p class="font-semibold text-gray-800">Internship</p>
+                            <p class="text-gray-600">Frontend Development</p>
+                        </div>
+                        <div class="mb-3">
+                            <p class="font-semibold text-gray-800">Projects</p>
+                            <p class="text-gray-600">
+                                <li>Income Tax Calculator</li>
+    
+                         <li>Women Empowerment in Sports</li>
+                         <li>Technical websites</li> </p>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <!-- Education Card -->
+                <div class="card bg-white p-6 rounded-xl shadow-md border-l-4 border-secondary">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-purple-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-graduation-cap text-secondary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Education</h3>
+                    </div>
+                    <div class="pl-12">
+                        <div class="mb-3">
+                            <p class="font-semibold text-gray-800">Bachelor of Technology</p>
+                            <p class="text-gray-600">Computer Engineering</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-800">Institute</p>
+                            <p class="text-gray-600">AISSMS IOIT, Pune</p>
+                        </div>
+                        <div class="mt-6">
+                            <p class="font-semibold text-gray-800">Coursework</p>
+                            <ul class="list-disc list-inside text-gray-600 mt-2">
+                                <li>Web Technologies</li>
+                                <li>Machine Learning</li>
+                                <li>Database Systems</li>
+                                <li>Software Engineering</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-sm">
+                <p class="text-gray-700 mb-4">
+                    Hi! I'm <span class="highlight font-semibold">Sayali Yadav</span>, a passionate engineering student at AISSMS IOIT, Pune. 
+                    I love exploring new things and working on exciting projects. 
+                    I've built diverse projects—from portfolios and chatbots to healthcare and tax-saving systems.
+                </p>
+                <p class="text-gray-700">
+                    I'm proficient in <span class="font-semibold text-primary">C++, Java, Python, and PHP</span>, and enjoy working with databases. 
+                    My main focus is on web development, and I also practice Data Structures and Algorithms (DSA). 
+                    I'm a fast learner, always eager to explore new technologies, and I enjoy working on innovative and impactful projects that make a difference.
+                </p>
+                <div class="mt-6 flex flex-wrap gap-3">
+                    <span class="bg-indigo-100 text-primary px-4 py-1 rounded-full text-sm font-medium">Continuous Learning</span>
+                    <span class="bg-indigo-100 text-primary px-4 py-1 rounded-full text-sm font-medium">Problem Solver</span>
+                    <span class="bg-indigo-100 text-primary px-4 py-1 rounded-full text-sm font-medium">Team Player</span>
+                    <span class="bg-indigo-100 text-primary px-4 py-1 rounded-full text-sm font-medium">Detail Oriented</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-6 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">Technical Skills</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+                I've developed expertise in various technologies through coursework, projects, and self-learning
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Left Column - Skill Categories -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="card bg-white p-6 rounded-xl shadow-sm text-center">
+                        <div class="text-4xl text-primary mb-3">
+                            <i class="fab fa-html5"></i>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2">Frontend</h3>
+                        <p class="text-gray-600 text-sm">HTML, CSS, JavaScript, React</p>
+                    </div>
+                    <div class="card bg-white p-6 rounded-xl shadow-sm text-center">
+                        <div class="text-4xl text-primary mb-3">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2">Backend</h3>
+                        <p class="text-gray-600 text-sm">PHP, Python, Java</p>
+                    </div>
+                    <div class="card bg-white p-6 rounded-xl shadow-sm text-center">
+                        <div class="text-4xl text-primary mb-3">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2">Databases</h3>
+                        <p class="text-gray-600 text-sm">MySQL, MongoDB</p>
+                    </div>
+                    <div class="card bg-white p-6 rounded-xl shadow-sm text-center">
+                        <div class="text-4xl text-primary mb-3">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2">ML & DSA</h3>
+                        <p class="text-gray-600 text-sm">Python, Algorithms</p>
+                    </div>
+                </div>
+                
+                <!-- Right Column - Skill Bars -->
+                <div class="bg-white p-8 rounded-xl shadow-sm">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6">Proficiency Levels</h3>
+                    
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium text-gray-700">Frontend Development</span>
+                            <span class="text-gray-600">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium text-gray-700">Backend Development</span>
+                            <span class="text-gray-600">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium text-gray-700">Database Management</span>
+                            <span class="text-gray-600">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium text-gray-700">Data Structures & Algorithms</span>
+                            <span class="text-gray-600">88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium text-gray-700">Problem Solving</span>
+                            <span class="text-gray-600">92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 92%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Projects Section -->
+    <section id="projects" class="py-20 px-6 bg-gradient-to-r from-purple-50 to-indigo-50">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">My Projects</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                    <div class="bg-gray-200 border-2 border-dashed w-full h-48 flex items-center justify-center text-gray-500">
+                      <img src="Images/women_empowement.jpeg" alt="Portfolio" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Women Empowerment </h3>
+                        <p class="text-gray-600 mb-4">
+                            Women empowerment refers to the process of granting women the ability to make decisions for their lives, access equal
+                             opportunities,and break free from societal constraints.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">HTML</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Tailwind CSS</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                    <div class="bg-gray-200 border-2 border-dashed w-full h-48 flex items-center justify-center text-gray-500">
+                       
+                       <img src="Images/income_tax.jpeg" alt="Smart Income Tax Calculator" class="w-full h-48 object-cover">
+                    </img>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Smart Income Tax Calculator</h3>
+                        <p class="text-gray-600 mb-4">
+                            A comprehensive tax calculation tool that handles multiple deduction options and tax regimes with real-time calculations.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">React</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Node.js</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">MongoDB</span>
+                        </div>
+                        <a href="TaxBuddy Prototype.pdf" class="hover:text-secondary flex items-center text-sm justify-center">
+                     <i class="far fa-image mr-2"></i> View Screenshots
+                         </a>
+                        
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                    <div class="bg-gray-200 border-2 border-dashed w-full h-48 flex items-center justify-center text-gray-500">
+                       <img src="Images/diseases_prediction.jpeg" alt="Disease prediction" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Multiple Disease Prediction</h3>
+                        <p class="text-gray-600 mb-4">
+                            ML-based system that predicts potential diseases based on symptoms using various machine learning algorithms.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Python</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Flask</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Scikit-learn</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 bg-gradient-to-br from-indigo-50 to-blue-50">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">Get In Touch</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+                Have a project in mind or want to discuss opportunities? Feel free to reach out!
+            </p>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-6">Contact Information</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Email</h4>
+                                <p class="text-gray-600">sayaliy331@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Location</h4>
+                                <p class="text-gray-600">Pune, Maharashtra, India</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-university text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Education</h4>
+                                <p class="text-gray-600">AISSMS IOIT, Pune</p>
+                                <p class="text-gray-600">B.Tech in Computer Science</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center mt-8 space-x-4">
+                            <a href="https://www.linkedin.com/in/sayaliyadav2005" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="https://github.com/Sayali-Yadav16" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                           
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-6">Send Me a Message</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-gray-700 mb-2" for="name">Name</label>
+                            <input type="text" id="name" class="contact-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 mb-2" for="email">Email</label>
+                            <input type="email" id="email" class="contact-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 mb-2" for="subject">Subject</label>
+                            <input type="text" id="subject" class="contact-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 mb-2" for="message">Message</label>
+                            <textarea id="message" rows="4" class="contact-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="bg-primary hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition duration-300 w-full">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                <h3 class="text-2xl font-bold mb-4">Sayali Ramesh Yadav</h3>
+                <p class="text-gray-400 max-w-2xl mx-auto mb-8">
+                    Passionate Web Developer and Engineering Student focused on creating innovative solutions
+                </p>
+                
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="https://www.linkedin.com/in/sayaliyadav2005" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="https://github.com/Sayali-Yadav16" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                   
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-4 mb-8">
+                    <a href="#about" class="text-gray-400 hover:text-white transition duration-300">About</a>
+                    <a href="#skills" class="text-gray-400 hover:text-white transition duration-300">Skills</a>
+                    <a href="#projects" class="text-gray-400 hover:text-white transition duration-300">Projects</a>
+                    <a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contact</a>
+                </div>
+                
+                <p class="text-gray-500">© 2023 Sayali Ramesh Yadav. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Animate skill bars when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBars = entry.target.querySelectorAll('.skill-progress');
+                    progressBars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 300);
+                    });
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('#skills .skill-bar').forEach(bar => {
+            observer.observe(bar);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
